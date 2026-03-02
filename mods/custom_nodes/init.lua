@@ -34,3 +34,39 @@ minetest.register_node("custom_nodes:trampoline", {
         end
     end,
 })
+-- 4. Стовбур яблуні
+minetest.register_node("custom_nodes:apple_tree", {
+    description = "Apple Tree Log",
+    tiles = {"apple_tree.png"},
+    is_ground_content = false,
+    groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
+    sounds = default.node_sound_wood_defaults(),
+})
+
+-- 5. Дошки яблуні (підлога)
+minetest.register_node("custom_nodes:apple_planks", {
+    description = "Apple Wood Planks",
+    tiles = {"apple_planks.png"},
+    is_ground_content = false,
+    groups = {wood = 1, choppy = 3, oddly_breakable_by_hand = 2, flammable = 3},
+    sounds = default.node_sound_wood_defaults(),
+})
+
+---- КРАФТ ТЕПЕР ПРАВИЛЬНИЙ ----
+
+-- З 1 стовбура яблуні -> 4 дошки яблуні
+minetest.register_craft({
+    output = "custom_nodes:apple_planks 4",
+    recipe = {
+        {"custom_nodes:apple_tree"},
+    }
+})
+
+-- З 2 дошок яблуні -> 4 ЗВИЧАЙНІ ПАЛИЦІ (як ти і хотів)
+minetest.register_craft({
+    output = "default:stick 4",
+    recipe = {
+        {"custom_nodes:apple_planks"},
+        {"custom_nodes:apple_planks"},
+    }
+})
