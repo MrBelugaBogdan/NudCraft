@@ -70,3 +70,43 @@ minetest.register_craft({
         {"custom_nodes:apple_planks"},
     }
 })
+-- 7. Магічне Яблуко (Предмет)
+minetest.register_craftitem("custom_nodes:magic_apple", {
+    description = "Magic Apple (Speed & Jump)",
+    inventory_image = "magic_apple.png",
+    on_use = function(itemstack, user, pointed_thing)
+        if user then
+            -- Даємо ефекти (швидкість 2, стрибок 2)
+            user:set_physics_override({
+                speed = 2.0,
+                jump = 2.0,
+            })
+            
+            -- Через 20 секунд повертаємо все як було
+            minetest.after(20, function()
+                if user:is_player() then
+                    user:set_physics_override({
+                        speed = 1.0,
+                        jump = 1.0,
+                    })
+                    minetest.chat_send_player(user:get_player_name(), "Ефект магічного яблука закінчився!")
+                end
+            end)
+            
+            -- Видаляємо 1 яблуко з руки після їжі
+            itemstack:take_item()
+            return itemstack
+        end
+    end,
+})
+
+-- КРАФТ: Яблуко з Темної Руди
+-- Тобі знадобиться звичайне яблуко і твоя темна руда
+minetest.register_craft({
+    output = "custom_nodes:magic_apple",
+    recipe = {
+        {"custom_nodes:dark_brick", "custom_nodes:dark_brick", "custom_nodes:dark_brick"},
+        {"custom_nodes:dark_brick", "default:apple",          "custom_nodes:dark_brick"},
+        {"custom_nodes:dark_brick", "custom_nodes:dark_brick", "custom_nodes:dark_brick"},
+    }
+})
