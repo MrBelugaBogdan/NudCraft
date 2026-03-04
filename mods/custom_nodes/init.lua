@@ -110,3 +110,36 @@ minetest.register_craft({
         {"custom_nodes:dark_brick", "custom_nodes:dark_brick", "custom_nodes:dark_brick"},
     }
 })
+-- 1. Скибка кавуна (їжа)
+minetest.register_craftitem("custom_nodes:watermelon_slice", {
+    description = "Watermelon Slice",
+    inventory_image = "watermelon_slice.png",
+    on_use = minetest.item_eat(2), -- Відновлює 1 сердечко (2 одиниці HP)
+})
+
+-- 2. Блок кавуна
+minetest.register_node("custom_nodes:watermelon", {
+    description = "Watermelon",
+    tiles = {"watermelon_side.png"}, -- З усіх боків буде зелений
+    groups = {snappy = 1, oddly_breakable_by_hand = 3},
+    sounds = default.node_sound_wood_defaults(),
+    
+    -- Коли ламаємо блок - випадає 3-5 скибок
+    drop = {
+        max_items = 5,
+        items = {
+            {items = {"custom_nodes:watermelon_slice"}, rarity = 1},
+            {items = {"custom_nodes:watermelon_slice"}, rarity = 1},
+            {items = {"custom_nodes:watermelon_slice"}, rarity = 1},
+        }
+    },
+})
+
+-- 3. КРАФТ (для тесту): 4 палички твого яблука = 1 кавун
+minetest.register_craft({
+    output = "custom_nodes:watermelon",
+    recipe = {
+        {"custom_nodes:apple_stick", "custom_nodes:apple_stick"},
+        {"custom_nodes:apple_stick", "custom_nodes:apple_stick"},
+    }
+})
