@@ -143,18 +143,30 @@ minetest.register_craft({
         {"custom_nodes:apple_stick", "custom_nodes:apple_stick"},
     }
 })
--- РЕЄСТРАЦІЯ ТВОЄЇ ЗЕМЛІ
-minetest.register_node("custom_nodes:my_dirt", {
-    description = "Dirt_with_grass",
+-- 1. БЛОК ПОВЕРХНІ (Трава + Земля)
+minetest.register_node("custom_nodes:dirt_with_grass", {
+    description = "Земля з травою",
     tiles = {
-        "dirt_part_1.png",         -- верх (тільки трава)
-        "dirt_part_6.png",         -- низ (тільки земля)
-        "dirt_part_1_2_3_4.png"    -- боки (трава + земля)
+        "dirt part 1.png",         -- ВЕРХ (тільки зелена трава)
+        "dirt part 6.png",         -- НИЗ (твоя чиста земля)
+        "dirt part 1 2 3 4.png"    -- БОКИ (твоя картинка з переходом)
     },
     groups = {crumbly = 3},
     sounds = default.node_sound_dirt_defaults(),
 })
 
+-- 2. БЛОК ГЛИБИНИ (Тільки земля)
+minetest.register_node("custom_nodes:dirt", {
+    description = "Dirt",
+    tiles = {"dirt.png"},   -- Вона коричнева з усіх сторін
+    groups = {crumbly = 3},
+    sounds = default.node_sound_dirt_defaults(),
+})
+
+-- 3. ПІДМІНА В ГЕНЕРАТОРІ (Найважливіше!)
+-- Це змусить гру заповнити весь світ твоїми блоками
+minetest.register_alias("default:dirt", "custom_nodes:dirt")
+minetest.register_alias("default:dirt_with_grass", "custom_nodes:dirt_with_grass")
 -- РЕЄСТРАЦІЯ ТВОЄЇ СКРИНІ (СИНДУКА)
 minetest.register_node("custom_nodes:my_chest", {
     description = "Chest",
