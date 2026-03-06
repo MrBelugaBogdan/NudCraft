@@ -181,3 +181,40 @@ minetest.register_node("custom_nodes:my_chest", {
     groups = {choppy = 2, oddly_breakable_by_hand = 2},
     sounds = default.node_sound_wood_defaults(),
 })
+-- РЕЄСТРАЦІЯ КАМЕНЮ ТА РУД
+-- Камінь (Stone)
+minetest.register_node("custom_nodes:stone", {
+    description = "Stone",
+    tiles = {"stone.png"},
+    groups = {cracky = 3, stone = 1},
+    sounds = default.node_sound_stone_defaults(),
+})
+
+-- Вугілля (Coal)
+minetest.register_node("custom_nodes:stone_coal", {
+    description = "Coal Ore",
+    tiles = {"stone_coal.png"},
+    groups = {cracky = 3},
+    sounds = default.node_sound_stone_defaults(),
+})
+
+-- Залізо (Iron)
+minetest.register_node("custom_nodes:stone_iron", {
+    description = "Iron Ore",
+    tiles = {"stone_iron.png"},
+    groups = {cracky = 2}, -- Залізо трохи важче копати
+    sounds = default.node_sound_stone_defaults(),
+})
+
+-- Золото (Gold)
+minetest.register_node("custom_nodes:stone_gold", {
+    description = "Gold Ore",
+    tiles = {"stone_gold.png"},
+    groups = {cracky = 2},
+    sounds = default.node_sound_stone_defaults(),
+})
+
+-- ПІДМІНА В ГЕНЕРАТОРІ СВІТУ
+minetest.register_alias("default:stone", "custom_nodes:stone")
+minetest.register_alias("default:stone_with_coal", "custom_nodes:stone_coal")
+minetest.register_alias("default:stone_with_iron", "custom_nodes:stone_iron")
