@@ -218,3 +218,13 @@ minetest.register_node("custom_nodes:stone_gold", {
 minetest.register_alias("default:stone", "custom_nodes:stone")
 minetest.register_alias("default:stone_with_coal", "custom_nodes:stone_coal")
 minetest.register_alias("default:stone_with_iron", "custom_nodes:stone_iron")
+-- 1. ЛИСТЯ (Leaves) - Те саме з Pixilart
+minetest.register_node("custom_nodes:leaves", {
+    description = "Leaves",
+    drawtype = "allfaces_optional", -- Це робить листя прозорим
+    tiles = {"pixilart-drawing.png"},
+    paramtype = "light",
+    groups = {snappy = 3, leafdecay = 3, flammable = 2},
+    sounds = default.node_sound_leaves_defaults(),
+})
+minetest.register_alias("default:leaves", "custom_nodes:leaves")
