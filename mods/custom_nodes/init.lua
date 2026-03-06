@@ -143,3 +143,29 @@ minetest.register_craft({
         {"custom_nodes:apple_stick", "custom_nodes:apple_stick"},
     }
 })
+-- РЕЄСТРАЦІЯ ТВОЄЇ ЗЕМЛІ
+minetest.register_node("custom_nodes:my_dirt", {
+    description = "Dirt_with_grass",
+    tiles = {
+        "dirt_part_1.png",         -- верх (тільки трава)
+        "dirt_part_6.png",         -- низ (тільки земля)
+        "dirt_part_1_2_3_4.png"    -- боки (трава + земля)
+    },
+    groups = {crumbly = 3},
+    sounds = default.node_sound_dirt_defaults(),
+})
+
+-- РЕЄСТРАЦІЯ ТВОЄЇ СКРИНІ (СИНДУКА)
+minetest.register_node("custom_nodes:my_chest", {
+    description = "Chest",
+    tiles = {
+        "Syndyk_part_6.png",       -- зверху
+        "Syndyk_part_6.png",       -- знизу
+        "Syndyk_part_1.png",       -- боки (ліво/право)
+        "Syndyk_part_1.png",       -- зад
+        "Syndyk_part_5.png"        -- перед (там де защіпка!)
+    },
+    paramtype2 = "facedir", -- Це дозволяє скрині "повертатися" обличчям до гравця
+    groups = {choppy = 2, oddly_breakable_by_hand = 2},
+    sounds = default.node_sound_wood_defaults(),
+})
