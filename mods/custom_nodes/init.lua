@@ -228,3 +228,71 @@ minetest.register_node("custom_nodes:leaves", {
     sounds = default.node_sound_leaves_defaults(),
 })
 minetest.register_alias("default:leaves", "custom_nodes:leaves")
+-- РЕЄСТРАЦІЯ КИРОК
+-- Дерев'яна кирка
+minetest.register_tool("custom_nodes:pickaxe_wood", {
+    description = "Wooden Pickaxe",
+    inventory_image = "pickaxe_wood.png",
+    tool_capabilities = {
+        full_punch_interval = 1.2,
+        max_drop_level=0,
+        groupcaps={
+            cracky = {times={[3]=1.60}, uses=10, maxlevel=1},
+        },
+        damage_groups = {fleshy=2},
+    },
+})
+
+-- Кам'яна кирка
+minetest.register_tool("custom_nodes:pickaxe_stone", {
+    description = "Stone Pickaxe",
+    inventory_image = "pickaxe_stone.png",
+    tool_capabilities = {
+        full_punch_interval = 1.1,
+        max_drop_level=0,
+        groupcaps={
+            cracky = {times={[2]=2.0, [3]=1.00}, uses=20, maxlevel=1},
+        },
+        damage_groups = {fleshy=3},
+    },
+})
+
+-- Залізна кирка
+minetest.register_tool("custom_nodes:pickaxe_iron", {
+    description = "Iron Pickaxe",
+    inventory_image = "pickaxe_iron.png",
+    tool_capabilities = {
+        full_punch_interval = 1.0,
+        max_drop_level=1,
+        groupcaps={
+            cracky = {times={[1]=3.0, [2]=1.2, [3]=0.60}, uses=30, maxlevel=2},
+        },
+        damage_groups = {fleshy=4},
+    },
+})
+
+-- Золота кирка (Супер-швидка!)
+minetest.register_tool("custom_nodes:pickaxe_gold", {
+    description = "Gold Pickaxe",
+    inventory_image = "pickaxe_gold.png",
+    tool_capabilities = {
+        full_punch_interval = 0.5,
+        max_drop_level=1,
+        groupcaps={
+            cracky = {times={[1]=1.0, [2]=0.5, [3]=0.20}, uses=15, maxlevel=3},
+        },
+        damage_groups = {fleshy=2},
+    },
+})
+-- Рецепт для кам'яної кирки
+minetest.register_craft({
+    output = "custom_nodes:pickaxe_stone",
+    recipe = {
+        {"custom_nodes:stone", "custom_nodes:stone", "custom_nodes:stone"},
+        {"", "default:stick", ""},
+        {"", "default:stick", ""},
+    }
+})
+
+-- Для залізної та золотої треба буде додати злитки (Ingots), 
+-- які ми намалюємо наступного разу!
