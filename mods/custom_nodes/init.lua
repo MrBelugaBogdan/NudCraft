@@ -296,3 +296,49 @@ minetest.register_craft({
 
 -- Для залізної та золотої треба буде додати злитки (Ingots), 
 -- які ми намалюємо наступного разу!
+-- 1. РЕЄСТРАЦІЯ ПРЕДМЕТІВ (Items)
+minetest.register_craftitem("custom_nodes:coal_lump", {
+    description = "Coal",
+    inventory_image = "coal_lump.png", -- Твій малюнок вугілля
+    groups = {coal = 1, flammable = 1},
+})
+
+minetest.register_craftitem("custom_nodes:iron_ingot", {
+    description = "Iron Ingot",
+    inventory_image = "iron_ingot.png", -- Твій малюнок заліза
+})
+
+minetest.register_craftitem("custom_nodes:gold_ingot", {
+    description = "Gold Ingot",
+    inventory_image = "gold_ingot.png", -- Твій малюнок золота
+})
+
+-- 2. ЛОГІКА ВИПАДІННЯ (Щоб з руди падало вугілля)
+minetest.override_item("custom_nodes:stone_coal", {
+    drop = "custom_nodes:coal_lump",
+})
+
+-- 3. ПЕРЕПЛАВКА (В печі)
+minetest.register_craft({
+    type = "cooking",
+    output = "custom_nodes:iron_ingot",
+    recipe = "custom_nodes:stone_iron",
+    cooktime = 3,
+})
+
+minetest.register_craft({
+    type = "cooking",
+    output = "custom_nodes:gold_ingot",
+    recipe = "custom_nodes:stone_gold",
+    cooktime = 5,
+})
+
+-- 4. КРАФТ КИРОК (Тепер вони справжні!)
+minetest.register_craft({
+    output = "custom_nodes:pickaxe_iron",
+    recipe = {
+        {"custom_nodes:iron_ingot", "custom_nodes:iron_ingot", "custom_nodes:iron_ingot"},
+        {"", "default:stick", ""},
+        {"", "default:stick", ""},
+    }
+})
