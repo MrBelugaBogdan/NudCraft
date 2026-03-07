@@ -342,3 +342,4 @@ minetest.register_craft({
         {"", "default:stick", ""},
     }
 })
+cobblestone.png
