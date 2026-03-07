@@ -1,15 +1,15 @@
-MultiCraft Open Source
+NudCraft Open Source
 ======================
 
 ![Build Status](https://github.com/MultiCraft/MultiCraft2/workflows/build/badge.svg)
 [![License](https://img.shields.io/badge/license-LGPLv3.0%2B-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0.en.html)
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/license-CC_BY--SA_4.0-orange.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
-MultiCraft Open Source is a free open-source voxel game engine with easy modding and game creation.
+NudCraft Open Source is a free open-source voxel game engine with easy modding and game creation.
 
-MultiCraft is based on the Minetest project, which is developed by a [number of contributors](https://github.com/minetest/minetest/graphs/contributors).
+NudCraft is based on the Minetest project, which is developed by a [number of contributors](https://github.com/minetest/minetest/graphs/contributors).
 
-Copyright © 2014-2023 Maksim Gamarnik [MoNTE48] <Maksym48@pm.me> & MultiCraft Development Team.
+Copyright © 2014-2023 Bogdan Medvedov [Mr_Beluga] <Maksym48@pm.me> & NudCraft Development Team.
 
 [![License](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)](https://jb.gg/OpenSourceSupport)
 
